@@ -3,12 +3,9 @@ package tetris;
 import java.awt.Point;
 
 import gameframework.base.MoveStrategyKeyboard;
-import gameframework.base.MoveStrategyRandom;
-import gameframework.base.ObservableValue;
+
 import gameframework.game.CanvasDefaultImpl;
 import gameframework.game.Game;
-import gameframework.game.GameEntity;
-import gameframework.game.GameLevel;
 import gameframework.game.GameMovableDriverDefaultImpl;
 import gameframework.game.GameUniverseDefaultImpl;
 import gameframework.game.GameUniverseViewPortDefaultImpl;
@@ -16,16 +13,7 @@ import gameframework.game.MoveBlockerChecker;
 import gameframework.game.MoveBlockerCheckerDefaultImpl;
 import gameframework.game.OverlapProcessor;
 import gameframework.game.OverlapProcessorDefaultImpl;
-import pacman.entity.Ghost;
-import pacman.entity.Jail;
-import pacman.entity.Pacgum;
 import pacman.entity.Pacman;
-import pacman.entity.SuperPacgum;
-import pacman.entity.TeleportPairOfPoints;
-import pacman.entity.Wall;
-import pacman.rule.GhostMovableDriver;
-import pacman.rule.PacmanMoveBlockers;
-import pacman.rule.PacmanOverlapRules;
 import tetris.entity.EmptySquare;
 import tetris.entity.NotEmptySquare;
 import tetris.rule.TetrisMoveBlockers;
@@ -53,29 +41,46 @@ public class TitrisLevelOne extends TitrisLevel {
 		for (int i = 0; i < 31; ++i) {//Hauteur
 			for (int j = 0; j < 29; ++j) {//Largeur
 				Point p=new Point(j * SQUARE_SIZE, i * SQUARE_SIZE);
-				int nombreAleatoire = 10 + (int)(Math.random() * ((20 - 10) + 1));
-				if (nombreAleatoire>15){
 					universe.addGameEntity(new EmptySquare(canvas, p));
-	//				s=(Square) squareFactory.getSquare(canvas,p,"Empty");
-			//		universe.addGameEntity(s);
-				}
-				if (nombreAleatoire<16){
-					universe.addGameEntity(new NotEmptySquare(canvas, p));
-	//				s=(Square) squareFactory.getSquare(canvas,p,"NotEmpty");
-		//			universe.addGameEntity(s);
-			
-				}
-
-
 			}
 		}
+	
+		//int fragmentTetriceTypeNb =0;// (Math.random() * ((2 - 0) + 1));
+		//FragmentTetrisFactory ftf=new FragmentTetrisFactory(); 
+		//FragmentTetris ft= ftf.getFragment(fragmentTetriceTypeNb);
+		
+		
+		
+	/*	
+		NotEmptySquare ft= new NotEmptySquare(canvas);
+		GameMovableDriverDefaultImpl ftDriver=new GameMovableDriverDefaultImpl();
+		MoveStrategyKeyboard keyStrFt = new MoveStrategyKeyboard();
+		ftDriver.setmoveBlockerChecker(moveBlockerChecker);
+		canvas.addKeyListener(keyStrFt);
+		ft.setDriver(ftDriver);
+		ft.setPosition(new Point(10 * SQUARE_SIZE, 10 * SQUARE_SIZE));
+		universe.addGameEntity(ft);
+		*/
+				
+		Pacman myPac = new Pacman(canvas);
 		GameMovableDriverDefaultImpl pacDriver = new GameMovableDriverDefaultImpl();
 		MoveStrategyKeyboard keyStr = new MoveStrategyKeyboard();
 		pacDriver.setStrategy(keyStr);
 		pacDriver.setmoveBlockerChecker(moveBlockerChecker);
 		canvas.addKeyListener(keyStr);
-
-
-	}
+		myPac.setDriver(pacDriver);
+		myPac.setPosition(new Point(10 * SQUARE_SIZE, 10 * SQUARE_SIZE));
+		universe.addGameEntity(myPac);
+		
+		NotEmptySquare myNotEmptySquare = new NotEmptySquare(canvas);
+		GameMovableDriverDefaultImpl NotEmptySquareDriver = new GameMovableDriverDefaultImpl();
+		MoveStrategyKeyboard keyStr1 = new MoveStrategyKeyboard();
+		NotEmptySquareDriver.setStrategy(keyStr1);
+		NotEmptySquareDriver.setmoveBlockerChecker(moveBlockerChecker);
+		canvas.addKeyListener(keyStr1);
+		myNotEmptySquare.setDriver(NotEmptySquareDriver);
+		myNotEmptySquare.setPosition(new Point(14 * SQUARE_SIZE, 17 * SQUARE_SIZE));
+		universe.addGameEntity(myNotEmptySquare);
+		}
 
 }

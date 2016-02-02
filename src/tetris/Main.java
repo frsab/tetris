@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("fonction main");
-		System.out.println("construction of a game  g");
+		System.out.println("construct a game  g");
 		GameDefaultImpl g = new GameDefaultImpl();
 		System.out.println("constract a empty array list of GamaLevel object");
 		ArrayList<GameLevel> levels = new ArrayList<GameLevel>();
