@@ -11,11 +11,11 @@ import gameframework.game.GameMovableDriverDefaultImpl;
 import gameframework.game.SpriteManager;
 import gameframework.game.SpriteManagerDefaultImpl;
 
-public  abstract class   FragmentTetris   
+public  abstract class   ShapeTetris   
 										extends GameMovable 
 										implements Drawable, GameEntity,Overlappable {
 
-	public FragmentTetris() {
+	public ShapeTetris() {
 		super();
 		
 

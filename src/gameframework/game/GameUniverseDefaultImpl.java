@@ -1,6 +1,7 @@
 package gameframework.game;
 
 import gameframework.base.Overlappable;
+import tetris.rule.TetrisMoveBlockerChecker;
 import gameframework.base.Movable;
 
 import java.util.Iterator;
@@ -18,6 +19,10 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	public GameUniverseDefaultImpl(MoveBlockerChecker obs, OverlapProcessor col) {
 		overlapProcessor = col;
 		moveBlockerChecker = obs;
+	}
+
+	public GameUniverseDefaultImpl(TetrisMoveBlockerChecker moveBlockerChecker2, OverlapProcessor overlapProcessor2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public synchronized void addGameEntity(GameEntity gameEntity) {

@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gameframework.game.SpriteManagerDefaultImpl;
-import tetris.entity.FragmentTetris;
 
-public class CrossFragmentTetris extends FragmentTetris {
-	protected List<FragmentTetris> listFT=new ArrayList<FragmentTetris>();
+
+public class CrossShapeTetris extends ShapeTetris {
+	protected List<ShapeTetris> listFT=new ArrayList<ShapeTetris>();
 	
-	public CrossFragmentTetris(Canvas defaultCanvas) {
+	public CrossShapeTetris(Canvas defaultCanvas) {
 		super();
-		FragmentTetris ft1=new NotEmptySquare(defaultCanvas);
+		ShapeTetris ft1=new NotEmptySquare(defaultCanvas);
 		listFT.add(ft1);
-		FragmentTetris ft2=new NotEmptySquare(defaultCanvas);
+		ShapeTetris ft2=new NotEmptySquare(defaultCanvas);
 		listFT.add(ft2);
 
 	
@@ -25,7 +25,7 @@ public class CrossFragmentTetris extends FragmentTetris {
 
 	@Override
 	public void draw(Graphics g) {
-		for(FragmentTetris ft:listFT){
+		for(ShapeTetris ft:listFT){
 			ft.draw(g);
 			;
 		}
@@ -35,7 +35,7 @@ public class CrossFragmentTetris extends FragmentTetris {
 	@Override
 	public Rectangle getBoundingBox() {
 		Rectangle tempRec =new Rectangle(0,0,0,0);
-		for(FragmentTetris ft:listFT){
+		for(ShapeTetris ft:listFT){
 			tempRec.add(ft.getBoundingBox());
 		}
 		//tempRec.add(r);
@@ -45,7 +45,7 @@ public class CrossFragmentTetris extends FragmentTetris {
 
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		for(FragmentTetris ft:listFT){
+		for(ShapeTetris ft:listFT){
 			ft.oneStepMoveAddedBehavior();
 			;
 		}
